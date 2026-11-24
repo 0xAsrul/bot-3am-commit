@@ -21,6 +21,8 @@ MESSAGE = (
 def main() -> None:
     assert 1 <= len(MESSAGE) <= 200, f"message is {len(MESSAGE)} chars"
     assert "\n" not in MESSAGE, "message must be one line"
+    assert MESSAGE == MESSAGE.strip(), "message must not have leading/trailing whitespace"
+    assert "  " not in MESSAGE, "message must not contain double spaces"
     out_dir = "/output"
     os.makedirs(out_dir, exist_ok=True)
     with open(os.path.join(out_dir, "entry.txt"), "w", encoding="utf-8") as f:
